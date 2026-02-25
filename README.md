@@ -7,6 +7,10 @@ Current implementation scope:
 - identity and attestation validation
 - policy evaluation service (baseline)
 
+Protocol source of truth:
+
+- https://github.com/UAICP/uaicp_specification
+
 ## Purpose
 
 This repository is intentionally narrow and composable. It provides portable building blocks that can be embedded under existing frameworks and orchestration runtimes.
@@ -55,9 +59,19 @@ if (decision.decision !== 'allow') {
 
 ## Roadmap
 
-- verification report builder
-- invariant evaluation engine
-- audit event emitters
+Current status:
+
+- built:
+  - identity and attestation validation
+  - policy evaluator with allow/deny/review decisions
+- next:
+  - verification report builder
+  - invariant evaluation engine
+  - audit event envelope helpers
+
+Roadmap issue tracker:
+
+- https://github.com/UAICP/uaicp_specification/issues/16
 
 ## License
 
