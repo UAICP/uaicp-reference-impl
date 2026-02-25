@@ -1,166 +1,23 @@
 name: Bug Report
-description: File a bug report for UAICP reference implementations
-title: "[BUG] "
-labels: ["🐛 Bug", "🔍 Needs Triage"]
-assignees: []
+description: Report a defect in reference implementation behavior.
+title: "[Bug] "
+labels: ["bug"]
 body:
-  - type: markdown
-    attributes:
-      value: |
-        Thanks for taking the time to file a bug report for the UAICP reference implementation!
-
-  - type: input
-    id: contact
-    attributes:
-      label: Contact Details
-      description: How can we get in touch with you if we need more info?
-      placeholder: ex. email@example.com
-    validations:
-      required: false
-
   - type: textarea
-    id: what-happened
+    id: summary
     attributes:
-      label: What happened?
-      description: Describe the bug and what you expected to happen
-      placeholder: |
-        Bug description: [What went wrong]
-        Expected behavior: [What should have happened]
-        Actual behavior: [What actually happened]
+      label: Summary
     validations:
       required: true
-
-  - type: dropdown
-    id: component
-    attributes:
-      label: Which component is affected?
-      multiple: true
-      options:
-        - Universal Discovery Mesh
-        - Protocol Translation Hub
-        - Adaptive Router
-        - Capability Negotiator
-        - Integration Examples
-        - Testing Framework
-        - Documentation
-        - CI/CD Pipeline
-        - Other
-    validations:
-      required: true
-
-  - type: dropdown
-    id: protocol_context
-    attributes:
-      label: Protocol Integration Context
-      description: Which protocol integrations are involved?
-      multiple: true
-      options:
-        - MCP (Model Context Protocol)
-        - OpenAI API
-        - Google A2A
-        - Custom Protocol
-        - Multi-Protocol
-        - Protocol-Agnostic
-        - Other
-    validations:
-      required: false
-
-  - type: dropdown
-    id: priority
-    attributes:
-      label: Priority Level
-      description: How critical is this bug?
-      options:
-        - 🔥 Critical - Blocking core functionality
-        - ⚡ High - Significant impact on usage
-        - 📈 Medium - Moderate impact
-        - 📋 Low - Minor issue or enhancement
-    validations:
-      required: true
-
   - type: textarea
-    id: reproduction
+    id: repro
     attributes:
-      label: Steps to Reproduce
-      description: Provide a minimal reproduction case
-      placeholder: |
-        1. Install UAICP reference implementation: `npm install @uaicp/reference-impl`
-        2. Initialize component: `const mesh = new UniversalDiscoveryMesh(config)`
-        3. Call method: `await mesh.findServices([...])`
-        4. Observe error: [specific error message]
-      
-        **Code Sample:**
-        ```typescript
-        // Minimal code that reproduces the issue
-        import { UniversalDiscoveryMesh } from '@uaicp/reference-impl';
-        
-        const mesh = new UniversalDiscoveryMesh({
-          // configuration that causes the issue
-        });
-        
-        // Code that triggers the bug
-        ```
+      label: Reproduction Steps
     validations:
       required: true
-
   - type: textarea
-    id: environment
+    id: expected
     attributes:
-      label: Environment Details
-      description: Provide your development environment details
-      placeholder: |
-        - OS: [e.g. macOS 14.0, Ubuntu 22.04, Windows 11]
-        - Node.js version: [e.g. 20.0.0]
-        - TypeScript version: [e.g. 5.0.0]
-        - UAICP version: [e.g. 1.0.0-alpha.1]
-        - Implementation type: [e.g. reference implementation, custom fork]
-        - Package manager: [e.g. npm, yarn, pnpm]
+      label: Expected Behavior
     validations:
       required: true
-
-  - type: textarea
-    id: logs
-    attributes:
-      label: Error Logs and Stack Trace
-      description: Include relevant error logs, stack traces, and debug output
-      placeholder: |
-        ```
-        Error: [Error message]
-        at [Stack trace]
-        ...
-        ```
-        
-        Debug logs:
-        ```
-        [Debug output if available]
-        ```
-      render: shell
-
-  - type: dropdown
-    id: testing
-    attributes:
-      label: Testing Information
-      description: Have you tested this with different configurations?
-      options:
-        - Tested with default configuration only
-        - Tested with multiple configurations
-        - Tested with different protocol adapters
-        - Tested in different environments
-        - Not tested extensively
-    validations:
-      required: false
-
-  - type: checkboxes
-    id: checklist
-    attributes:
-      label: Pre-submission Checklist
-      description: Please verify you've completed these steps
-      options:
-        - label: I have searched existing issues for duplicates
-          required: true
-        - label: I have provided a minimal reproduction case
-          required: true
-        - label: I have included relevant error logs
-          required: true
-        - label: I agree to follow the Code of Conduct
-          required: true

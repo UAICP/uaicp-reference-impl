@@ -2,6 +2,8 @@
 
 Reference implementation primitives for the UAICP reliability contract.
 
+UAICP is an open-source contribution initiated by **Prismworks AI** ([prismworks.ai](https://prismworks.ai)) and developed with community contributions.
+
 Current implementation scope:
 
 - identity and attestation validation
@@ -79,4 +81,4 @@ Use `.private/` for local-only notes or planning artifacts. Only `.private/.gitk
 
 ## License
 
-Apache-2.0
+Apache-2.0. See `NOTICE` for attribution.

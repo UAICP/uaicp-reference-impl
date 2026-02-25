@@ -22,7 +22,7 @@
     "verification",
     "orchestration"
   ],
-  "author": "UAICP Community",
+  "author": "Prismworks AI",
   "license": "Apache-2.0",
   "devDependencies": {
     "@types/jest": "^29.5.12",
