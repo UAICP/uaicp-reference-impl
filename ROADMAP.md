@@ -1,31 +1,30 @@
 # UAICP Reference Implementation Roadmap
 
-## Current
+This roadmap is status-based and issue-driven. It does not use timeline/date commitments.
 
-- identity and attestation validation
-- policy evaluation baseline
+## Complete
 
-## Next
+- identity and attestation validation (`src/identity`)
+- policy evaluation baseline (`src/policy`)
+- finance workflow comparison example with four implementations:
+  - manual
+  - agentic
+  - agent without UAICP
+  - agent with UAICP
 
-- invariant evaluation engine
-- verification report assembly
+## In Progress
+
+- verification report assembly helpers
 - audit event envelope helpers
 
-## Later
+## Planned
 
-- adapter helper packages
-- conformance harness runner
-
-## Exit Criteria
-
-`Next` is complete when:
-
-- baseline invariant evaluator can gate `deliver` state decisions
-- verification report output is schema-compatible
-- audit helper emits required trace fields for replay
+- framework adapter walkthroughs with runnable fixtures
+- conformance harness runner examples
+- additional finance and regulated-domain workflow fixtures
 
 ## Tracking
 
-Roadmap coordination lives in the specification repository:
+Roadmap execution is tracked in repository issues:
 
-- https://github.com/UAICP/uaicp_specification/issues/16
+- https://github.com/UAICP/uaicp-reference-impl/issues

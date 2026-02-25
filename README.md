@@ -4,76 +4,72 @@ Reference implementation primitives for the UAICP reliability contract.
 
 UAICP is an open-source contribution initiated by **Prismworks AI** ([prismworks.ai](https://prismworks.ai)) and developed with community contributions.
 
-Current implementation scope:
+## Purpose
 
-- identity and attestation validation
-- policy evaluation service (baseline)
+This repository provides concrete, composable building blocks and examples for enforcing UAICP controls under existing orchestration frameworks.
 
 Protocol source of truth:
 
 - https://github.com/UAICP/uaicp_specification
 
-## Purpose
-
-This repository is intentionally narrow and composable. It provides portable building blocks that can be embedded under existing frameworks and orchestration runtimes.
-
 ## Implemented Modules
 
-- `src/identity`:
+- `src/identity`
   - schema contracts for identity and attestation
-  - validator with strict and optional attestation modes
-- `src/policy`:
-  - deterministic policy evaluator for allow/deny/review decisions
+  - validator with strict/optional attestation modes
+- `src/policy`
+  - deterministic policy evaluator for `allow`, `deny`, `needs_review`
   - reason-coded decisions for runtime gating
+- `src/examples/finance/workflow-comparison.ts`
+  - side-by-side finance workflow comparison:
+    - `manual`
+    - `agentic`
+    - `agent_without_uaicp`
+    - `agent_with_uaicp`
 
-## Quick Start
+## Finance Workflow Comparison
+
+The included finance scenario models a high-risk write action (`reverse_wire_transfer`) and shows behavioral differences across implementation styles.
+
+What it demonstrates:
+
+- where unsafe approvals can happen without deterministic gates
+- how explicit approval and evidence requirements change outcomes
+- how UAICP identity/policy/evidence/verification gates control final delivery
+
+Run it:
 
 ```bash
 npm install
+npm run example:finance
+```
+
+Run tests:
+
+```bash
 npm test
 npm run build
 ```
 
-## Example
+## Roadmap Status
 
-```ts
-import { IdentityValidator, PolicyEvaluator } from '@uaicp/uaicp-reference-impl';
+This repository uses status-based roadmap tracking, not timeline/date planning.
 
-const identityResult = IdentityValidator.validate(identityInput, true);
-if (!identityResult.valid || !identityResult.identity) {
-  throw new Error('Identity validation failed');
-}
-
-const decision = PolicyEvaluator.evaluate({
-  identity: identityResult.identity,
-  action: 'deploy',
-  resource: 'prod:payments',
-  write_risk: 'write_high_risk',
-  approval_token: 'change-approval-123',
-  allowed_control_classes: ['human-directed'],
-  trust_tier_allowlist: ['high']
-});
-
-if (decision.decision !== 'allow') {
-  console.log(decision.reasons);
-}
-```
-
-## Roadmap
-
-Current status:
-
-- built:
+- complete
   - identity and attestation validation
-  - policy evaluator with allow/deny/review decisions
-- next:
-  - verification report builder
-  - invariant evaluation engine
+  - policy evaluator
+  - finance workflow comparison example
+- in progress
+  - richer verification report assembly primitives
   - audit event envelope helpers
+- planned
+  - framework-specific adapter walkthrough packages
+  - conformance harness runner examples
 
-Roadmap issue tracker:
+Tracking:
 
-- https://github.com/UAICP/uaicp_specification/issues/16
+- `ROADMAP.md`
+- https://github.com/UAICP/uaicp-reference-impl/issues
 
 ## Local Private Notes
 

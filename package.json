@@ -8,7 +8,8 @@
     "setup": "npm install",
     "build": "tsc",
     "test": "jest",
-    "lint": "echo \"Linting not configured yet\""
+    "lint": "echo \"Linting not configured yet\"",
+    "example:finance": "npm run build && node dist/examples/finance/run-comparison.js"
   },
   "repository": {
     "type": "git",
