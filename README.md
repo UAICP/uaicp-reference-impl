@@ -73,6 +73,10 @@ Roadmap issue tracker:
 
 - https://github.com/UAICP/uaicp_specification/issues/16
 
+## Local Private Notes
+
+Use `.private/` for local-only notes or planning artifacts. Only `.private/.gitkeep` is tracked; all other files in `.private/` are ignored.
+
 ## License
 
 Apache-2.0
