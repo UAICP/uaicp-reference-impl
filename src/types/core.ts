@@ -1,4 +1,5 @@
 export type ControlClass = 'autonomous' | 'human-supervised' | 'human-directed';
+export type UaicpState = 'intake' | 'plan' | 'execute' | 'verify' | 'deliver' | 'fail_safe';
 
 export interface Attestation {
   issuer: string;
@@ -17,9 +18,9 @@ export interface AgentIdentity {
 export interface UaicpEnvelope {
   uaicp_version: string;
   request_id: string;
-  message_type: string;
+  state: UaicpState;
   timestamp: string;
   trace_id: string;
   identity: AgentIdentity;
-  // Other fields omitted for this focused implementation
+  metadata?: Record<string, unknown>;
 }

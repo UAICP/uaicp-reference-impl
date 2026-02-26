@@ -110,10 +110,10 @@ export function runAgentWorkflowWithUaicp(input: FinanceWorkflowInput): Workflow
     identity: identityResult.identity,
     action: 'reverse_wire_transfer',
     resource: input.destinationAccount,
-    write_risk: 'write_high_risk',
-    approval_token: input.approvalToken,
-    allowed_control_classes: ['human-supervised', 'human-directed'],
-    trust_tier_allowlist: ['high'],
+    writeRisk: 'write_high_risk',
+    approvalToken: input.approvalToken,
+    allowedControlClasses: ['human-supervised', 'human-directed'],
+    trustTierAllowlist: ['high'],
   });
 
   if (policyResult.decision === 'needs_review') {

@@ -7,7 +7,13 @@ export interface PolicyEvaluationInput {
   identity: AgentIdentity;
   action: string;
   resource: string;
-  write_risk: WriteRisk;
+  writeRisk?: WriteRisk;
+  approvalToken?: string;
+  allowedControlClasses?: ControlClass[];
+  trustTierAllowlist?: string[];
+  verificationStatus?: 'pass' | 'fail' | 'partial';
+  // Backward-compatible aliases
+  write_risk?: WriteRisk;
   approval_token?: string;
   allowed_control_classes?: ControlClass[];
   trust_tier_allowlist?: string[];
@@ -21,6 +27,10 @@ export interface PolicyEvaluationResult {
 export class PolicyEvaluator {
   static evaluate(input: PolicyEvaluationInput): PolicyEvaluationResult {
     const reasons: string[] = [];
+    const writeRisk = input.writeRisk ?? input.write_risk;
+    const approvalToken = input.approvalToken ?? input.approval_token;
+    const allowedControlClasses = input.allowedControlClasses ?? input.allowed_control_classes;
+    const trustTierAllowlist = input.trustTierAllowlist ?? input.trust_tier_allowlist;
 
     if (!input.action || !input.resource) {
       return {
@@ -29,20 +39,20 @@ export class PolicyEvaluator {
       };
     }
 
-    if (input.allowed_control_classes?.length) {
-      if (!input.allowed_control_classes.includes(input.identity.control_class)) {
+    if (allowedControlClasses?.length) {
+      if (!allowedControlClasses.includes(input.identity.control_class)) {
         reasons.push('CONTROL_CLASS_BLOCKED');
       }
     }
 
-    if (input.trust_tier_allowlist?.length) {
+    if (trustTierAllowlist?.length) {
       const trustTier = input.identity.attestation?.trust_tier;
-      if (!trustTier || !input.trust_tier_allowlist.includes(trustTier)) {
+      if (!trustTier || !trustTierAllowlist.includes(trustTier)) {
         reasons.push('TRUST_TIER_BLOCKED');
       }
     }
 
-    if (input.write_risk === 'write_high_risk' && !input.approval_token) {
+    if (writeRisk === 'write_high_risk' && !approvalToken) {
       reasons.push('APPROVAL_REQUIRED');
       return {
         decision: 'needs_review',

@@ -18,10 +18,10 @@ describe('PolicyEvaluator', () => {
       identity,
       action: 'deploy',
       resource: 'prod:api',
-      write_risk: 'write_high_risk',
-      approval_token: 'approved-123',
-      allowed_control_classes: ['human-directed'],
-      trust_tier_allowlist: ['high']
+      writeRisk: 'write_high_risk',
+      approvalToken: 'approved-123',
+      allowedControlClasses: ['human-directed'],
+      trustTierAllowlist: ['high']
     });
 
     expect(result.decision).toBe('allow');
@@ -33,7 +33,7 @@ describe('PolicyEvaluator', () => {
       identity,
       action: 'deploy',
       resource: 'prod:api',
-      write_risk: 'write_high_risk'
+      writeRisk: 'write_high_risk'
     });
 
     expect(result.decision).toBe('needs_review');
@@ -48,8 +48,8 @@ describe('PolicyEvaluator', () => {
       },
       action: 'deploy',
       resource: 'prod:api',
-      write_risk: 'write_low_risk',
-      allowed_control_classes: ['human-directed']
+      writeRisk: 'write_low_risk',
+      allowedControlClasses: ['human-directed']
     });
 
     expect(result.decision).toBe('deny');
@@ -67,8 +67,8 @@ describe('PolicyEvaluator', () => {
       },
       action: 'access',
       resource: 'sensitive:dataset',
-      write_risk: 'write_low_risk',
-      trust_tier_allowlist: ['high']
+      writeRisk: 'write_low_risk',
+      trustTierAllowlist: ['high']
     });
 
     expect(result.decision).toBe('deny');
@@ -80,7 +80,7 @@ describe('PolicyEvaluator', () => {
       identity,
       action: '',
       resource: 'prod:api',
-      write_risk: 'read_only'
+      writeRisk: 'read_only'
     });
 
     expect(result.decision).toBe('deny');
