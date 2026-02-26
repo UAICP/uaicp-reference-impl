@@ -1,5 +1,13 @@
 # UAICP Reference Implementation
 
+## Archived Repository
+
+This repository is archived and read-only.
+
+The canonical source has moved to the UAICP monorepo:
+- [UAICP/uaicp](https://github.com/UAICP/uaicp)
+- [reference-impl/](https://github.com/UAICP/uaicp/tree/main/reference-impl)
+
 Reference implementation primitives for the UAICP reliability contract.
 
 UAICP is an open-source contribution initiated by **Prismworks AI** ([prismworks.ai](https://prismworks.ai)) and developed with community contributions.
@@ -10,7 +18,7 @@ This repository provides concrete, composable building blocks and examples for e
 
 Protocol source of truth:
 
-- [uaicp_specification](https://github.com/UAICP/uaicp_specification)
+- [specification/](https://github.com/UAICP/uaicp/tree/main/specification)
 
 ## Implemented Modules
 
@@ -69,7 +77,7 @@ This repository uses status-based roadmap tracking, not timeline/date planning.
 Tracking:
 
 - `ROADMAP.md`
-- [Issues](https://github.com/UAICP/uaicp-reference-impl/issues)
+- [Monorepo Issues](https://github.com/UAICP/uaicp/issues)
 
 ## Local Private Notes
 
